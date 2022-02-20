@@ -101,8 +101,20 @@ int main(int argc, const char * argv[])
                 short stereo_L = *((short*)(content+content_count));
                 short stereo_R = *((short*)(content+content_count_R));
                 
+                /*
+                 OR----------------------------------------------------------------------------------
+                 short* stereo_L = ((short*)(content+content_count));
+                 short* stereo_R = ((short*)(content+content_count_R));
+                 ------------------------------------------------------------------------------------
+                */
+                
                 //output the extracted data from content array
                 printf("%d\t%d\t%d\t\t%d\n", count2, mono, stereo_L, stereo_R);
+                
+                /*SECOND METHOD --- INCLUDE [#] AFTER EACH ARRAY-------------------------------------
+                printf("%d\t%d\t%d\t\t%d\n", count2, mono, stereo_L, stereo_R);
+                 ------------------------------------------------------------------------------------
+                 */
                 count2 +=1;         //inc counter by 1 to go through each sample
                 content_count+=4;   //each sample and channel are 4 bytes apart, so we increase by that
                 content_count_R+=4;
