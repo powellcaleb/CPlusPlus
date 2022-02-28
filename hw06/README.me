@@ -1,0 +1,20 @@
+1. Libraries are good for holding an abundance on .o files. There are a lot of things that we may need to do, which can cause for a need for so many object files. Most of the time, most coders don't write all of it as it has already been created. Libraries fulfill the needs for many coders without having to fully write 100% of it, and being able to compile it on their system.
+
+2. The first library is static library. Just like the regular object files, they become apart of the executable. It's good because once together, the executable doesn't need the library around to run, but however it does make the executable file size way larger. The second library is shared object library. Unlike static, they remain separate from the executable and the code is only loaded by the executable at runtime. It's good because the library can be used my multiple different executables and allow for "plugin" since they're loaded at runtime.
+
+3. This is because open source code, you might need to install other packages for the library to work at all. Also compiling can be an issue as you'll need to "write" the library over, which can lead to more errors. In addition, the open source code may not be up to date or compatible with the current operating system you may be running. I would assume it's not good to write your own libraries unless it's being solely used by you and your operating system.
+
+4.
+
+all: main
+
+main.o: main.cc
+	g++ -c -Wall -Werror main.cc
+
+main: main.o
+	g++ -o main main.o -lpng
+
+5. A class with no methods, consisting of declared variables. Functions then take the struct as an argument to access the variables.
+
+
+5. What is a struct?

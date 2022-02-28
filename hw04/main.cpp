@@ -15,6 +15,7 @@
 
 int main(int argc, const char * argv[])
 {
+    //---------------------------------------------FORMAT CHUNK--------------------------------------------
     //Open the wav file
     FILE* fp = fopen ("example.wav", "rb" );
     
@@ -59,6 +60,7 @@ int main(int argc, const char * argv[])
         content[size] = '\0';
         fread(content, sizeof(char), size, fp);
         
+    //--------------------------------------------------------DATA CHUNK-----------------------------------
         //Compares the chars stored in FOURCC to the header name. This makes sure in correct sub-chunk
         if (strcmp(FOURCC, "fmt ") == 0 )
         {
