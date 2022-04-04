@@ -21,7 +21,7 @@ class Vector
     Vector operator+(const Vector& v1) const; //ADDITION
     Vector operator-(const Vector& v1) const; //SUBTRACTION
     Vector& operator+=(const Vector& v1); //IN-PLACE
-    Vector& operator*=(const Vector& v1); //VECTOR DOUBLE
+    Vector& operator*=(double factor); //VECTOR DOUBLE
     double operator*(const Vector& v1) const; //VECTOR SUM
 
     

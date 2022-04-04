@@ -28,6 +28,9 @@ int main(int argc, const char * argv[])
     Vector v3 = v1 + v2; //ADDITION
     Vector v4 = v2 - v1; //SUBTRACTION
     v1 += v1; //IN-PLACE [ (12*9) + (8*5) + (4*1) ]
+    
+    Vector v5 = v1; //VECTOR DOUBLE
+    v5 *= 2.0;
     double sum = v1 * v2; //VECTORS SUM
     
     
@@ -37,6 +40,6 @@ int main(int argc, const char * argv[])
     std::cout << "Addition: " << v3 << std::endl;
     std::cout << "Subtraction: " << v4 << std::endl;
     std::cout << "In-Place: " << v1 << std::endl;
-    //std::cout << "Multiply Vectors Double: " << v1 << std::endl;
+    std::cout << "Multiply Vectors Double: " << v5 << std::endl;
     std::cout << "Multiply Vectors Sum: " << sum << std::endl;
 }

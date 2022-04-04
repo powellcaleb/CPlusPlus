@@ -79,7 +79,7 @@ Vector& Vector::operator+=(const Vector& v1)
     return *this;
 }
 //--------------------------MULTIPLY-DOUBLE-------------------------------------
-Vector& Vector::operator*=(const Vector& v1)
+Vector& Vector::operator*=(double factor)
 {
     //auto num1 = v1.getX1() * 2.0;
     //auto num2 = v1.getY1() * 2.0;
