@@ -24,24 +24,5 @@ int main(int argc, const char * argv[])
     
     //close the file
     fclose(fp);
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+  
 }
