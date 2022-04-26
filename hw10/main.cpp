@@ -11,10 +11,10 @@
 #include <cstdio>
 #include <stdio.h>
 #include <unordered_map>
+#include "Pattern.h"
 
 int main(int argc, const char * argv[])
 {
-    //FILE* fp = fopen ("FFF.txt", "r");
     
     //unordered map object
     std::unordered_map<std::string, int> umap;
@@ -23,64 +23,119 @@ int main(int argc, const char * argv[])
     std::ifstream file;
     file.open("test.txt");
     
-    //create string variable
+    //create string variable to hold the entirety of the txt file
     std::string book;
     
-    //pattern chunk size
-    int length = 1;
-    //int lengthCount = 0;
+    Pattern p;
     
     //makes sure the file is open
     if ( file.is_open() )
     {
         // variables
-        char letter; //holds each char that's read in the txt file
-        //int patternCount = 0; //counts the # of elements in a pattern
-        //int countCount = 0; //counts the number of each pattern
-        std::string pattern = ""; //initialize string variable to hold the pattern
+        std::string word; //string variable to hold words from txt file
         
-        while ( file.good() ) //while there is a next element in the txt file
+        //while there is a next element in the txt file
+        while ( file.good() )
         {
+            //stores the word in the word variable from the txt file
+            file >> word;
             
-            
-            //each pattern occurs after each word hence space
-            if ( length == 9 ) //checks if the pattern length has reached 8 yet
-            {
-                std::cout << pattern;
-                
-                printf ("%d", length);
-                //std::cout << pattern;
-                
-                if ( umap.find(pattern) == umap.end() ) //if the pattern is not in the map already
-                {
-                    umap[pattern] = 1; //set the pattern and initialize its count
-                }
-                else //if the pattern in already in the map
-                {
-                    umap.at(pattern) += 1; //simply access the value at the key and increment its count
-                }
-                
-                //countCount = 0; //reset the count since our increments only increase by 1
-                length = 0;
-                pattern = ""; //reset our pattern string variable, so we can storea new pattern inside
-            }
-            else //if the element is not a space
-            {
-                letter = file.get(); //grabs single char element and stores it
-                
-                pattern.push_back(letter); //add the char to the current string to complete the pattern
-                length++;
-            }
-            
-            // patternCount++; //increase of counter so we have the length of the pattern
-            //std::cout << letter; //prints letter
+            //concatenate the word to the book string
+            book += word+" ";
         }
         
-        //iterates through the map
+        //string variable to hold the 8-letter patterb
+        std::string pattern;
+        
+        //variables
+        int start = 0;                  //start variable for substring
+        int patternLength = 8;          //holds length of our patterns
+        int bookLength = book.size();   //holds the length of the book string
+
+        //read the book string while the starting point is "patternLength" away from the end of the book string
+        while (start <= bookLength-patternLength)
+        {
+            //takes the 8 letter pattern (starting point up to the patternLength) and stores in variable to input into hash map
+            pattern = book.substr(start, patternLength);
+            
+            if ( umap.find(pattern) == umap.end() ) //if the pattern is not in the map already
+            {
+                umap[pattern] = 1; //set the pattern and initialize its count
+            }
+            else //if the pattern in already in the map
+            {
+                umap.at(pattern) += 1; //simply access the value at the key and increment its count
+            }
+            
+            //increment our starting point to the next letter
+            start++;
+        }
+        
+        std::unordered_map<std::string, std::vector> lookupTable;
+        std::vector<Pattern*> v;
+        start = 0;
+        while (start <= bookLength - patternLength)
+        {
+            
+            std::string pattern2 = book.substr(start, patternLength - 1);
+            
+            if ( lookupTable.find(pattern2) == lookupTable.end() )
+            {
+                lookupTable[pattern2] = v//std::vector<Pattern*>;
+            }
+             //if the pattern in already in the map
+            lookupTable.at(pattern2).pushback(new Pattern (pattern, patternCount));
+        }
+        
+        // F
+        int totalCounts = 0;
+        for (auto& i: lookupTable)
+        {
+            //tempPattern = i.first;
+            tempVector = i.second;
+            
+          
+            int tempCount = tempVector.getCount(); //p.getCount()
+            totalCounts += tempCount; //
+            
+            double prob = 0.0;
+            
+            //loop over vectors
+            for (auto& j: v)
+            {
+                prob += tempCount / totalCounts;
+            }
+            
+        }
+        
+        
+        
+        
+    
+        
+        //read the hash map and output
         for (auto& i: umap)
         {
             std::cout << i.first << ": " << i.second << std::endl;
         }
+        
+        //std::unordered_map<std::string pattern2, std::vector Pattern> lookupTable;
+         
+        for (auto& i: lookupTable)
+        {
+            std::cout << i.first << ": " << i.second << std::endl;
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        file.close();
         
         /*read by line
         while ( file.good() )
