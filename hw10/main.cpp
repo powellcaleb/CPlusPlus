@@ -76,9 +76,10 @@ int main(int argc, const char * argv[])
         start = 0;
         while (start <= bookLength - patternLength)
         {
-            
+            //pattern that's one letter short
             std::string pattern2 = book.substr(start, patternLength - 1);
             
+            //store new pattern in lookuptable
             if ( lookupTable.find(pattern2) == lookupTable.end() )
             {
                 lookupTable[pattern2] = v//std::vector<Pattern*>;
@@ -87,7 +88,7 @@ int main(int argc, const char * argv[])
             lookupTable.at(pattern2).pushback(new Pattern (pattern, patternCount));
         }
         
-        // F
+        // Section F
         int totalCounts = 0;
         for (auto& i: lookupTable)
         {
